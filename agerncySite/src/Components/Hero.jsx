@@ -16,7 +16,7 @@ const Hero = () => {
         className="inline-flex items-center gap-2 border border-gray-300 p-1.5 pr-4 rounded-full"
       >
         <img className="w-20" src={assets.group_profile} alt="" />
-        <p className="text-xs font-medium">Trudted by 10K+ peoples</p>
+        <p className="text-xs font-medium">Trusted by 100+ peoples</p>
       </motion.div>
 
       <motion.h1

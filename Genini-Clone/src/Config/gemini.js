@@ -5,8 +5,8 @@ import {
 } from "@google/generative-ai";
 
 // 🔑 Replace with your real API key (better: use process.env.API_KEY)
-const API_KEY = "AIzaSyBxqWTyMEQs4ag7nBhNzIgNyZDiZPEO-vg";
-const MODEL_NAME = "gemini-1.5-flash-latest";
+const API_KEY = "";
+const MODEL_NAME = "gemini-pro";
 
 
 async function runChat(prompt) {
