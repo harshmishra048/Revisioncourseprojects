@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Project Presentation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+section{
+min-height:100vh;
+padding:100px 10%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+position:relative;
+}
+
+h1{
+font-size:3.5rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+h2{
+font-size:2.5rem;
+margin-bottom:30px;
+color:#00f5ff;
+}
+
+p{
+line-height:1.8;
+opacity:0.9;
+font-size:1.1rem;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 40px rgba(0,255,255,0.1);
+margin-top:20px;
+}
+
+.hero{
+background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+url("https://images.unsplash.com/photo-1492724441997-5dc865305da7");
+background-size:cover;
+background-position:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:4rem;
+animation:fadeDown 1.5s ease forwards;
+}
+
+@keyframes fadeDown{
+0%{opacity:0; transform:translateY(-50px);}
+100%{opacity:1; transform:translateY(0);}
+}
+
+/* Floating glow */
+.glow{
+position:absolute;
+width:300px;
+height:300px;
+background:linear-gradient(45deg,#00f5ff,#ff00ff);
+border-radius:50%;
+filter:blur(150px);
+opacity:0.4;
+animation:float 8s infinite ease-in-out;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-50px);}
+}
+
+/* Timeline */
+.timeline{
+border-left:3px solid #00f5ff;
+padding-left:20px;
+}
+
+.timeline div{
+margin-bottom:25px;
+}
+
+/* Counter */
+.counter{
+font-size:3rem;
+font-weight:800;
+color:#00f5ff;
+}
+
+/* Responsive */
+@media(max-width:768px){
+h1{font-size:2.2rem;}
+h2{font-size:1.8rem;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TITLE SLIDE -->
+<section class="hero">
+<div class="glow" style="top:10%;left:10%;"></div>
+<h1>Your Agency Project Name</h1>
+<p>Internship Project Presentation | 2026</p>
+<p>Team Name | Mentor Name | Institution Name</p>
+</section>
+
+<!-- INTRODUCTION -->
+<section>
+<h2 data-aos="fade-up">Introduction</h2>
+<div class="card" data-aos="fade-up" data-aos-delay="200">
+<p>This project is a fully frontend-based digital agency website designed to showcase services, portfolio, and client engagement strategies.</p>
+</div>
+</section>
+
+<!-- PROBLEM STATEMENT -->
+<section>
+<h2 data-aos="fade-right">Problem Statement</h2>
+<div class="card" data-aos="fade-left">
+<p>Many small businesses lack a strong digital presence. Traditional websites are outdated, non-responsive, and lack user engagement.</p>
+</div>
+</section>
+
+<!-- OBJECTIVES -->
+<section>
+<h2 data-aos="zoom-in">Objectives</h2>
+<div class="card">
+<ul>
+<li>Create modern UI/UX</li>
+<li>Ensure full responsiveness</li>
+<li>Implement smooth animations</li>
+<li>Optimize performance</li>
+<li>Follow clean code structure</li>
+</ul>
+</div>
+</section>
+
+<!-- EXISTING SYSTEM -->
+<section>
+<h2 data-aos="fade-up">Existing Systems</h2>
+<div class="timeline">
+<div data-aos="fade-up">
+<h3>Template-Based Websites</h3>
+<p>Limited customization and poor branding flexibility.</p>
+</div>
+<div data-aos="fade-up" data-aos-delay="200">
+<h3>Traditional Static Sites</h3>
+<p>Lack of responsiveness and interactive design.</p>
+</div>
+</div>
+</section>
+
+<!-- PROPOSED SYSTEM -->
+<section>
+<h2 data-aos="flip-left">Proposed System</h2>
+<div class="card">
+<p>A fully responsive, animated, modern frontend agency website with smooth scrolling and interactive sections.</p>
+</div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section>
+<h2 data-aos="fade-up">System Architecture</h2>
+<div class="card">
+<p>Browser → HTML Structure → CSS Styling → JavaScript Interactions</p>
+<img src="https://via.placeholder.com/600x300" width="100%">
+</div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section>
+<h2 data-aos="fade-right">Technologies Used</h2>
+<div class="card">
+<p>HTML5 | CSS3 | JavaScript | AOS | VS Code | Git</p>
+</div>
+</section>
+
+<!-- IMPLEMENTATION -->
+<section>
+<h2 data-aos="zoom-in">Implementation</h2>
+<div class="card">
+<p>Step 1: Wireframing<br>
+Step 2: Layout Design<br>
+Step 3: Styling & Animation<br>
+Step 4: Testing & Optimization</p>
+</div>
+</section>
+
+<!-- RESULTS -->
+<section>
+<h2 data-aos="fade-up">Results & Output</h2>
+<div class="card">
+<div class="counter" id="counter">0</div>
+<p>Responsive performance score achieved.</p>
+</div>
+</section>
+
+<!-- CHALLENGES -->
+<section>
+<h2 data-aos="fade-left">Challenges Faced</h2>
+<div class="card">
+<p>Animation timing adjustments, responsiveness across devices, and layout optimization.</p>
+</div>
+</section>
+
+<!-- FUTURE SCOPE -->
+<section>
+<h2 data-aos="fade-up">Future Scope</h2>
+<div class="card">
+<p>Backend integration, CMS dashboard, SEO optimization, cloud deployment.</p>
+</div>
+</section>
+
+<!-- CONCLUSION -->
+<section>
+<h2 data-aos="zoom-in">Conclusion</h2>
+<div class="card">
+<p>This project demonstrates practical frontend development skills and modern UI implementation.</p>
+</div>
+</section>
+
+<!-- REFERENCES -->
+<section>
+<h2 data-aos="fade-up">References</h2>
+<div class="card">
+<p>MDN Web Docs | W3Schools | CSS Tricks | JavaScript Documentation</p>
+</div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({duration:1200});
+
+// Counter animation
+let count=0;
+let counter=document.getElementById("counter");
+
+let interval=setInterval(()=>{
+if(count>=95){
+clearInterval(interval);
+}else{
+count++;
+counter.innerText=count+"%";
+}
+},20);
+
+</script>
+
+</body>
+</html>

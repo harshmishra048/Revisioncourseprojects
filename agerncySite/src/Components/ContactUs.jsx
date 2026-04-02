@@ -2,7 +2,7 @@ import React from "react";
 import Title from "./Title";
 import assets from "../assets/assets";
 import toast from "react-hot-toast";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 const ContactUs = () => {
   const onSubmit = async (event) => {
