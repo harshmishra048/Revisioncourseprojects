@@ -51,7 +51,7 @@ const Hero = () => {
         viewport={{ once: true }}
         className="relative"
       >
-        <img src={assets.hero_img} alt="" className="w-full max-w-6xl" />
+        <img src={assets.heroimage1} alt="" className="w-full max-w-6xl" />
         <img
           src={assets.bgImage1}
           alt=""

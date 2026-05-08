@@ -75,7 +75,7 @@ export const ServicesData = [
     fullDescription:
       "We help businesses connect with their audience through strategic advertising campaigns. From social media ads to paid promotions, we ensure your brand reaches the right audience and drives measurable results.",
 
-    image: "https://images.unsplash.com/photo-1557838923-2985c318be48",
+    image: assets.advertising,
 
     features: [
       "Targeted ad campaigns",
@@ -102,7 +102,7 @@ export const ServicesData = [
     fullDescription:
       "Our content marketing services focus on building strong online presence through valuable and engaging content. We create blogs, social media posts, and campaigns that attract, engage, and convert your audience.",
 
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    image: assets.cm,
 
     features: [
       "Content strategy planning",
@@ -129,7 +129,7 @@ export const ServicesData = [
     fullDescription:
       "We provide high-quality content writing services that engage your audience and strengthen your brand voice. From blogs to website copy, we deliver content that informs and converts.",
 
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a",
+    image: assets.cw,
 
     features: ["Blog writing", "Website content", "SEO writing", "Copywriting"],
 
@@ -151,8 +151,7 @@ export const ServicesData = [
     fullDescription:
       "We manage and grow your social media presence with engaging content and strategic campaigns. Our goal is to build your brand, increase engagement, and drive results.",
 
-    image:
-      "https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=800&q=80",
+    image: assets.social,
 
     features: [
       "Social media management",

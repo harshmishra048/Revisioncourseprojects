@@ -7,8 +7,8 @@ import TrustedBy from "./Components/TrustedBy";
 import Services from "./Components/Services";
 import OurWork from "./Components/OurWork";
 import Teams from "./Components/Teams";
-import ContactUs from "./Components/ContactUs";
 import Footer from "./Components/Footer";
+import ContactUs from "./Components/ContactUs";
 
 import ServiceDetail from "./Pages/ServiceDetail";
 import ServicesPage from "./Pages/ServicesPage";
@@ -83,8 +83,8 @@ const App = () => {
 
           {/* Individual service */}
           <Route path="/services/:slug" element={<ServiceDetail />} />
-          {/* contact us */}
-          <Route path="/contact-us" element={<ContactUs />} />
+          {/* Contact us page */}
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
 
         {/* Footer always visible */}

@@ -1,128 +1,149 @@
-import React from "react";
-import Title from "./Title";
-import assets from "../assets/assets";
-import toast from "react-hot-toast";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import emailjs from "emailjs-com";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 const ContactUs = () => {
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-    formData.append("access_key", "1d85e816-f113-469e-b59d-764532050253");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
+      // Save to Firebase
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: new Date(),
       });
 
-      const data = await response.json();
+      // Send Email
+      await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "YOUR_PUBLIC_KEY",
+      );
 
-      if (data.success) {
-        toast.success("Thanks for your submission, message sent successfully");
-        event.target.reset();
-      } else {
-        toast.error(data.message);
-      }
+      alert("Message sent successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
     } catch (error) {
-      toast.error(error.message);
+      console.error(error);
+      alert("Something went wrong");
     }
+
+    setLoading(false);
   };
 
   return (
-    <motion.div
-      id="contact-us"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="flex flex-col items-center gap-7 px-4 sm:px-12 lg:px-24 xl:px-40 text-gray-700 dark:text-white"
-      >
-          <br />
-          <Title
-        title="Reach out to us"
-        desc="We are here to help you with any questions or inquiries you may have."
-       />
+    <div id="contact-us" className="min-h-screen my-20 flex items-center justify-center p-6">
+      <div className="max-w-5xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2">
+        {/* Left Side */}
+        <div className="bg-blue-600 text-white p-10 flex flex-col justify-center">
+          <h2 className="text-4xl font-bold mb-6">Contact Us</h2>
 
-      <motion.form
-        onSubmit={onSubmit}
-        initial="hidden"
-        whileInView="visible"
-        transition={{ staggerChildren: 0.12 }}
-        viewport={{ once: true }}
-        className="grid sm:grid-cols-2 gap-3 sm:gap-5 max-w-3xl w-full"
-      >
-        {/* Name */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <p className="mb-2 text-sm font-medium">Your Name</p>
-          <div className="flex pl-3 rounded-lg border border-gray-300 dark:border-gray-600">
-            <img src={assets.person_icon} alt="" />
-            <input
-              name="name"
-              type="text"
-              placeholder="Enter your name"
-              className="w-full p-3 text-sm outline-none bg-transparent"
-              required
-            />
+          <p className="mb-8 text-lg text-blue-100">
+            We'd love to hear from you. Send us your queries anytime.
+          </p>
+
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <FaEnvelope />
+              <span>info@agencyAi.com</span>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <FaPhone />
+              <span>+91 81093 50879</span>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <FaMapMarkerAlt />
+              <span>In-front of MT Mart, Satna, Madhya Pradesh</span>
+            </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Email */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <p className="mb-2 text-sm font-medium">Email id</p>
-          <div className="flex pl-3 rounded-lg border border-gray-300 dark:border-gray-600">
-            <img src={assets.email_icon} alt="" />
-            <input
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              className="w-full p-3 text-sm outline-none bg-transparent"
-              required
-            />
-          </div>
-        </motion.div>
+        {/* Right Side */}
+        <div className="p-10">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block mb-2 font-semibold">Full Name</label>
 
-        {/* Message */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          className="sm:col-span-2"
-        >
-          <p className="mb-2 text-sm font-medium">Message</p>
-          <textarea
-            name="message"
-            rows={8}
-            placeholder="Enter your message"
-            className="w-full text-sm p-3 outline-none rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent"
-            required
-          />
-        </motion.div>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Enter your name"
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-        {/* Button */}
-        <motion.button
-          type="submit"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="w-max gap-2 flex bg-primary text-white text-sm px-10 py-3 rounded-full cursor-pointer"
-        >
-          Submit
-          <img src={assets.arrow_icon} alt="" className="w-4" />
-        </motion.button>
-      </motion.form>
-    </motion.div>
+            <div>
+              <label className="block mb-2 font-semibold">Email</label>
+
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Enter your email"
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2 font-semibold">Message</label>
+
+              <textarea
+                rows="5"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                placeholder="Write your message..."
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-blue-600 hover:bg-blue-700 transition text-white py-3 rounded-xl font-semibold"
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 

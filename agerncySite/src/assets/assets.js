@@ -3,7 +3,7 @@ import arrow_icon from './arrow_icon.svg'
 import group_profile from './group_profile.png'
 import bgImage1 from './bgImage1.png'
 import bgImage2 from './bgImage2.png'
-import hero_img from './hero_img.png'
+import heroimage1 from './heroimage1.webp'
 import microsoft_logo from './microsoft_logo.png'
 import zoom_logo from './zoom_logo.png'
 import rakuten_logo from './rakuten_logo.png'
@@ -32,6 +32,11 @@ import moon_icon from './moon_icon.svg'
 import canvas from './canvas.webp'
 import web from './web.webp'
 import ads from './ads.jpg'
+import advertising from './advertising.png'
+import cm from './cm.png'
+import cw from './cw.png'
+import social from './social.png'
+import harsh from './harsh.jpeg'
 
 
 export const company_logos = [
@@ -49,7 +54,7 @@ const assets = {
   group_profile,
   bgImage1,
   bgImage2,
-  hero_img,
+  heroimage1,
   ads_icon,
   content_icon,
   marketing_icon,
@@ -72,16 +77,20 @@ const assets = {
   canvas,
   ads,
   web,
+  advertising,
+  cm,
+  cw,
+  social,
+  harsh
 }
 
 export default assets
 
 export const teamData = [
   {
-    name: "Haley Carter",
+    name: "Harsh Mishra",
     title: "CEO & founder",
-    image:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
+    image: assets.harsh,
     email: "haley@company.com",
     location: "New York, USA",
     skills: [
